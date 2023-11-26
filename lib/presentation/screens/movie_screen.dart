@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/helper/constant/constants_resource.dart';
 import 'package:movies_app/helper/utils/dialog_utils.dart';
-import 'package:movies_app/presentation/widgets/custom_cached_image.dart';
+import 'package:movies_app/presentation/screens/favorite_movie_screen.dart';
+import 'package:movies_app/presentation/widgets/loading_state_widget.dart';
 
 import '../../businessLogic/movieScreenBloc/movie_screen_bloc.dart';
+import '../../dataProvider/model/movie_model.dart';
 import '../../helper/enums/status_enum.dart';
 import '../../main.dart';
+import '../widgets/error_state_widget.dart';
+import '../widgets/movie_card_widget.dart';
 
 class MovieScreen extends StatefulWidget {
   const MovieScreen({super.key});
@@ -48,7 +51,11 @@ class _MovieScreenState extends State<MovieScreen> {
         leadingWidth: double.maxFinite,
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FavoriteMovieScreen(),
+                  )),
               icon: const Icon(
                 CupertinoIcons.heart_fill,
                 color: Colors.red,
@@ -69,17 +76,10 @@ class _MovieScreenState extends State<MovieScreen> {
         },
         builder: (context, state) {
           return state.moviesListVS.status == Status.loading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
+              ? const LoadingStateWidget()
               : state.moviesListVS.status == Status.error
-                  ? Center(
-                      child: IconButton(
-                          onPressed: _getMovies,
-                          icon: const Icon(
-                            CupertinoIcons.refresh,
-                            color: Colors.red,
-                          )),
+                  ? ErrorStateWidget(
+                      onPressed: _getMovies,
                     )
                   : OrientationBuilder(
                       builder: (context, orientation) => GridView.builder(
@@ -94,113 +94,17 @@ class _MovieScreenState extends State<MovieScreen> {
                         ),
                         itemBuilder: (BuildContext context, int index) {
                           return LayoutBuilder(builder: (context, constraints) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(14)),
-                              alignment: Alignment.center,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.only(
-                                              topRight: Radius.circular(14),
-                                              topLeft: Radius.circular(14))),
-                                      alignment: Alignment.topCenter,
-                                      child: CustomCachedImage(
-                                        profileUrl: ConstantsResource
-                                                .MOVIES_IMAGES_BASE_URL +
-                                            (state.moviesListVS.data?[index]
-                                                    .posterPath ??
-                                                ""),
-                                        width: double.maxFinite,
-                                        height: double.maxFinite,
-                                        radius: 14,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 14, horizontal: 16),
-                                    decoration: const BoxDecoration(
-                                      color: Colors.grey,
-                                      borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(14),
-                                        bottomLeft: Radius.circular(14),
-                                      ),
-                                    ),
-                                    alignment: Alignment.topCenter,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: constraints.maxWidth - 56,
-                                              child: Text(
-                                                state.moviesListVS.data?[index]
-                                                        .title ??
-                                                    "",
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: constraints.maxWidth - 56,
-                                              child: Text(
-                                                state.moviesListVS.data?[index]
-                                                        .overview ??
-                                                    "",
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            context.read<MovieScreenBloc>().add(
-                                                MovieScreenEvent
-                                                    .updateLikedMovies(state
-                                                        .moviesListVS
-                                                        .data![index]));
-                                          },
-                                          child: Icon(
-                                            state.likedMovies.contains(state
-                                                    .moviesListVS.data?[index])
-                                                ? CupertinoIcons.heart_fill
-                                                : CupertinoIcons.heart,
-                                            color: state.likedMovies.contains(
-                                                    state.moviesListVS
-                                                        .data?[index])
-                                                ? Colors.red
-                                                : null,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
+                            return MovieCardWidget(
+                                movie: state.moviesListVS.data?[index] ??
+                                    const Movie(),
+                                constraints: constraints,
+                                isFavorite: state.likedMovies
+                                    .contains(state.moviesListVS.data?[index]),
+                                onHeartIconPressed: () => context
+                                    .read<MovieScreenBloc>()
+                                    .add(MovieScreenEvent.updateLikedMovies(
+                                        state.moviesListVS.data?[index] ??
+                                            const Movie())));
                           });
                         },
                         physics: const BouncingScrollPhysics(),
