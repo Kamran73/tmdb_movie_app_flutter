@@ -29,9 +29,8 @@ class TMDBRepositoryImpl implements TMDBRepository {
     final dioErrorResponse = e.response;
     if (e.isInternetConnectionError) {
       return const Failure(
-        errorCode: "",
-        errorMessage: "",
-      );
+          errorMessage: StringsResource.NO_INTERNET_ERROR_STR,
+          errorCode: StringsResource.INTERNET_STR);
     } else if (dioErrorResponse?.data != null) {
       final mainResponse = MainResponseModel.fromJson(dioErrorResponse?.data);
       return Failure(
