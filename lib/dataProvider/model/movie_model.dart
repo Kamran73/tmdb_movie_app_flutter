@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'movie_model.freezed.dart';
-
 part 'movie_model.g.dart';
 
 @freezed
@@ -14,7 +13,7 @@ abstract class Movie with _$Movie {
     String? originalLanguage,
     String? originalTitle,
     String? overview,
-    String? posterPath,
+    @JsonKey(name: "poster_path") String? posterPath,
     String? mediaType,
     List<int>? genreIds,
     double? popularity,

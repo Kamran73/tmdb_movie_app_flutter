@@ -14,7 +14,7 @@ _$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
       originalLanguage: json['originalLanguage'] as String?,
       originalTitle: json['originalTitle'] as String?,
       overview: json['overview'] as String?,
-      posterPath: json['posterPath'] as String?,
+      posterPath: json['poster_path'] as String?,
       mediaType: json['mediaType'] as String?,
       genreIds:
           (json['genreIds'] as List<dynamic>?)?.map((e) => e as int).toList(),
@@ -34,7 +34,7 @@ Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
       'originalLanguage': instance.originalLanguage,
       'originalTitle': instance.originalTitle,
       'overview': instance.overview,
-      'posterPath': instance.posterPath,
+      'poster_path': instance.posterPath,
       'mediaType': instance.mediaType,
       'genreIds': instance.genreIds,
       'popularity': instance.popularity,

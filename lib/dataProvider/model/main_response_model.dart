@@ -3,12 +3,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'movie_model.dart';
 
 part 'main_response_model.freezed.dart';
-
 part 'main_response_model.g.dart';
 
 @freezed
 abstract class MainResponseModel with _$MainResponseModel {
-  @JsonSerializable(explicitToJson: true)
   const factory MainResponseModel({
     int? page,
     @JsonKey(name: "results") List<Movie>? movies,

@@ -21,22 +21,16 @@ MainResponseModel _$MainResponseModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MainResponseModel {
   int? get page => throw _privateConstructorUsedError;
-
   @JsonKey(name: "results")
   List<Movie>? get movies => throw _privateConstructorUsedError;
-
   int? get totalPages => throw _privateConstructorUsedError;
-
   int? get totalResults => throw _privateConstructorUsedError;
-
   @JsonKey(name: "status_code")
   int? get statusCode => throw _privateConstructorUsedError;
-
   @JsonKey(name: "status_message")
   String? get statusMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MainResponseModelCopyWith<MainResponseModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -47,7 +41,6 @@ abstract class $MainResponseModelCopyWith<$Res> {
   factory $MainResponseModelCopyWith(
           MainResponseModel value, $Res Function(MainResponseModel) then) =
       _$MainResponseModelCopyWithImpl<$Res, MainResponseModel>;
-
   @useResult
   $Res call(
       {int? page,
@@ -65,7 +58,6 @@ class _$MainResponseModelCopyWithImpl<$Res, $Val extends MainResponseModel>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -114,7 +106,6 @@ abstract class _$$MainResponseModelImplCopyWith<$Res>
   factory _$$MainResponseModelImplCopyWith(_$MainResponseModelImpl value,
           $Res Function(_$MainResponseModelImpl) then) =
       __$$MainResponseModelImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -174,8 +165,7 @@ class __$$MainResponseModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable()
 class _$MainResponseModelImpl implements _MainResponseModel {
   const _$MainResponseModelImpl(
       {this.page,
@@ -192,7 +182,6 @@ class _$MainResponseModelImpl implements _MainResponseModel {
   @override
   final int? page;
   final List<Movie>? _movies;
-
   @override
   @JsonKey(name: "results")
   List<Movie>? get movies {
@@ -277,25 +266,19 @@ abstract class _MainResponseModel implements MainResponseModel {
 
   @override
   int? get page;
-
   @override
   @JsonKey(name: "results")
   List<Movie>? get movies;
-
   @override
   int? get totalPages;
-
   @override
   int? get totalResults;
-
   @override
   @JsonKey(name: "status_code")
   int? get statusCode;
-
   @override
   @JsonKey(name: "status_message")
   String? get statusMessage;
-
   @override
   @JsonKey(ignore: true)
   _$$MainResponseModelImplCopyWith<_$MainResponseModelImpl> get copyWith =>

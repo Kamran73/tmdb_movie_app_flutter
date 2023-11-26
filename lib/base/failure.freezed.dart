@@ -21,11 +21,9 @@ Failure _$FailureFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Failure {
   String get errorMessage => throw _privateConstructorUsedError;
-
   String get errorCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $FailureCopyWith<Failure> get copyWith => throw _privateConstructorUsedError;
 }
@@ -34,7 +32,6 @@ mixin _$Failure {
 abstract class $FailureCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
       _$FailureCopyWithImpl<$Res, Failure>;
-
   @useResult
   $Res call({String errorMessage, String errorCode});
 }
@@ -46,7 +43,6 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -74,7 +70,6 @@ abstract class _$$FailureImplCopyWith<$Res> implements $FailureCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
           _$FailureImpl value, $Res Function(_$FailureImpl) then) =
       __$$FailureImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String errorMessage, String errorCode});
@@ -163,10 +158,8 @@ abstract class _Failure implements Failure {
 
   @override
   String get errorMessage;
-
   @override
   String get errorCode;
-
   @override
   @JsonKey(ignore: true)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>

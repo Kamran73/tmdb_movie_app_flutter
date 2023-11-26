@@ -23,7 +23,7 @@ Map<String, dynamic> _$$MainResponseModelImplToJson(
         _$MainResponseModelImpl instance) =>
     <String, dynamic>{
       'page': instance.page,
-      'results': instance.movies?.map((e) => e.toJson()).toList(),
+      'results': instance.movies,
       'totalPages': instance.totalPages,
       'totalResults': instance.totalResults,
       'status_code': instance.statusCode,
