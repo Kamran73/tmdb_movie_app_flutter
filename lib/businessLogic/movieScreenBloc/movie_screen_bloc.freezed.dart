@@ -473,27 +473,27 @@ mixin _$MovieScreenState {
         moviesState,
     required TResult orElse(),
   }) =>
-throw _privateConstructorUsedError;
-@optionalTypeArgs
-TResult map<TResult extends Object?>({
-required TResult Function(_MoviesState value) moviesState,
-}) =>
-throw _privateConstructorUsedError;
-@optionalTypeArgs
-TResult? mapOrNull<TResult extends Object?>({
-TResult? Function(_MoviesState value)? moviesState,
-}) =>
-throw _privateConstructorUsedError;
-@optionalTypeArgs
-TResult maybeMap<TResult extends Object?>({
-TResult Function(_MoviesState value)? moviesState,
-required TResult orElse(),
-}) =>
-throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_MoviesState value) moviesState,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_MoviesState value)? moviesState,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_MoviesState value)? moviesState,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
-@JsonKey(ignore: true)
-$MovieScreenStateCopyWith<MovieScreenState> get copyWith =>
-throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MovieScreenStateCopyWith<MovieScreenState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -508,14 +508,14 @@ abstract class $MovieScreenStateCopyWith<$Res> {
 /// @nodoc
 class _$MovieScreenStateCopyWithImpl<$Res, $Val extends MovieScreenState>
     implements $MovieScreenStateCopyWith<$Res> {
-_$MovieScreenStateCopyWithImpl(this._value, this._then);
+  _$MovieScreenStateCopyWithImpl(this._value, this._then);
 
 // ignore: unused_field
   final $Val _value;
 // ignore: unused_field
   final $Res Function($Val) _then;
 
-@pragma('vm:prefer-inline')
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? moviesListVS = null,
@@ -536,7 +536,7 @@ _$MovieScreenStateCopyWithImpl(this._value, this._then);
 
 /// @nodoc
 abstract class _$$MoviesStateImplCopyWith<$Res>
-implements $MovieScreenStateCopyWith<$Res> {
+    implements $MovieScreenStateCopyWith<$Res> {
   factory _$$MoviesStateImplCopyWith(
           _$MoviesStateImpl value, $Res Function(_$MoviesStateImpl) then) =
       __$$MoviesStateImplCopyWithImpl<$Res>;

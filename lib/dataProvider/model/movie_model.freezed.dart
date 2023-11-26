@@ -21,37 +21,23 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Movie {
   bool? get adult => throw _privateConstructorUsedError;
-
   String? get backdropPath => throw _privateConstructorUsedError;
-
   int? get id => throw _privateConstructorUsedError;
-
   String? get title => throw _privateConstructorUsedError;
-
   String? get originalLanguage => throw _privateConstructorUsedError;
-
   String? get originalTitle => throw _privateConstructorUsedError;
-
   String? get overview => throw _privateConstructorUsedError;
-
+  @JsonKey(name: "poster_path")
   String? get posterPath => throw _privateConstructorUsedError;
-
   String? get mediaType => throw _privateConstructorUsedError;
-
   List<int>? get genreIds => throw _privateConstructorUsedError;
-
   double? get popularity => throw _privateConstructorUsedError;
-
   String? get releaseDate => throw _privateConstructorUsedError;
-
   bool? get video => throw _privateConstructorUsedError;
-
   double? get voteAverage => throw _privateConstructorUsedError;
-
   int? get voteCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MovieCopyWith<Movie> get copyWith => throw _privateConstructorUsedError;
 }
@@ -60,7 +46,6 @@ mixin _$Movie {
 abstract class $MovieCopyWith<$Res> {
   factory $MovieCopyWith(Movie value, $Res Function(Movie) then) =
       _$MovieCopyWithImpl<$Res, Movie>;
-
   @useResult
   $Res call(
       {bool? adult,
@@ -70,7 +55,7 @@ abstract class $MovieCopyWith<$Res> {
       String? originalLanguage,
       String? originalTitle,
       String? overview,
-      String? posterPath,
+      @JsonKey(name: "poster_path") String? posterPath,
       String? mediaType,
       List<int>? genreIds,
       double? popularity,
@@ -87,7 +72,6 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -180,7 +164,6 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
   factory _$$MovieImplCopyWith(
           _$MovieImpl value, $Res Function(_$MovieImpl) then) =
       __$$MovieImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -191,7 +174,7 @@ abstract class _$$MovieImplCopyWith<$Res> implements $MovieCopyWith<$Res> {
       String? originalLanguage,
       String? originalTitle,
       String? overview,
-      String? posterPath,
+      @JsonKey(name: "poster_path") String? posterPath,
       String? mediaType,
       List<int>? genreIds,
       double? popularity,
@@ -304,7 +287,7 @@ class _$MovieImpl implements _Movie {
       this.originalLanguage,
       this.originalTitle,
       this.overview,
-      this.posterPath,
+      @JsonKey(name: "poster_path") this.posterPath,
       this.mediaType,
       final List<int>? genreIds,
       this.popularity,
@@ -332,11 +315,11 @@ class _$MovieImpl implements _Movie {
   @override
   final String? overview;
   @override
+  @JsonKey(name: "poster_path")
   final String? posterPath;
   @override
   final String? mediaType;
   final List<int>? _genreIds;
-
   @override
   List<int>? get genreIds {
     final value = _genreIds;
@@ -437,7 +420,7 @@ abstract class _Movie implements Movie {
       final String? originalLanguage,
       final String? originalTitle,
       final String? overview,
-      final String? posterPath,
+      @JsonKey(name: "poster_path") final String? posterPath,
       final String? mediaType,
       final List<int>? genreIds,
       final double? popularity,
@@ -450,49 +433,36 @@ abstract class _Movie implements Movie {
 
   @override
   bool? get adult;
-
   @override
   String? get backdropPath;
-
   @override
   int? get id;
-
   @override
   String? get title;
-
   @override
   String? get originalLanguage;
-
   @override
   String? get originalTitle;
-
   @override
   String? get overview;
 
   @override
+  @JsonKey(name: "poster_path")
   String? get posterPath;
-
   @override
   String? get mediaType;
-
   @override
   List<int>? get genreIds;
-
   @override
   double? get popularity;
-
   @override
   String? get releaseDate;
-
   @override
   bool? get video;
-
   @override
   double? get voteAverage;
-
   @override
   int? get voteCount;
-
   @override
   @JsonKey(ignore: true)
   _$$MovieImplCopyWith<_$MovieImpl> get copyWith =>

@@ -11,9 +11,7 @@ import '../../main.dart';
 import '../../repository/tmdb_repository.dart';
 
 part 'movie_screen_bloc.freezed.dart';
-
 part 'movie_screen_event.dart';
-
 part 'movie_screen_state.dart';
 
 class MovieScreenBloc extends Bloc<MovieScreenEvent, MovieScreenState> {
@@ -35,13 +33,10 @@ class MovieScreenBloc extends Bloc<MovieScreenEvent, MovieScreenState> {
     emit(state.copyWith(moviesListVS: ViewState.loading()));
     await tmdbRepository.getMovies().then((response) {
       response.fold(
-              (failure) =>
-              emit(
-                  state.copyWith(
-                      moviesListVS: ViewState.error(failure: failure))),
-              (success) =>
-              emit(state.copyWith(
-                  moviesListVS: ViewState.completed(data: success))));
+          (failure) => emit(
+              state.copyWith(moviesListVS: ViewState.error(failure: failure))),
+          (success) => emit(state.copyWith(
+              moviesListVS: ViewState.completed(data: success))));
     });
   }
 
@@ -52,7 +47,7 @@ class MovieScreenBloc extends Bloc<MovieScreenEvent, MovieScreenState> {
   List<Movie> _getCachedMovies() {
     List<Movie> moviesList = [];
     final moviesJson =
-    getIt<SharedPreferences>().getString(CommonKeys.FAV_MOVIES_CACHE_KEY);
+        getIt<SharedPreferences>().getString(CommonKeys.FAV_MOVIES_CACHE_KEY);
     if (moviesJson != null) {
       for (var element in jsonDecode(moviesJson)) {
         moviesList.add(Movie.fromJson(element));
@@ -61,8 +56,8 @@ class MovieScreenBloc extends Bloc<MovieScreenEvent, MovieScreenState> {
     return moviesList;
   }
 
-  Future<void> _onUpdateLikedMovies(Emitter emit,
-      _UpdateLikedMovies movie) async {
+  Future<void> _onUpdateLikedMovies(
+      Emitter emit, _UpdateLikedMovies movie) async {
     List<Movie> movieList = [...state.likedMovies];
     if (movieList.contains(movie.movie)) {
       movieList.removeWhere((element) => element.id == movie.movie.id);
